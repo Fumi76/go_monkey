@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"example.com/monkey/ast"
+	"example.com/monkey/code"
 )
 
 type ObjectType string
@@ -22,6 +23,10 @@ const (
 	BUILTIN_OBJ      = "BUILTIN"
 	ARRAY_OBJ        = "ARRAY"
 	HASH_OBJ         = "HASH"
+
+	COMPILED_FUNCION_OBJ = "COMPILED_FUNCTION_OBJ"
+
+	CLOSURE_OBJ = "CLOSURE"
 )
 
 type Object interface {
@@ -179,4 +184,32 @@ func (h *Hash) Inspect() string {
 // オブジェクトがハッシュキーとして使用できるか否かを判断するため
 type Hashable interface {
 	HashKey() HashKey
+}
+
+type CompiledFunction struct {
+	Instructions code.Instructions
+	// Local bindingの数
+	NumLocals     int
+	NumParameters int
+}
+
+func (cf *CompiledFunction) Type() ObjectType {
+	return COMPILED_FUNCION_OBJ
+}
+
+func (cf *CompiledFunction) Inspect() string {
+	return fmt.Sprintf("CompiledFunction[%p]", cf)
+}
+
+type Closure struct {
+	Fn   *CompiledFunction
+	Free []Object
+}
+
+func (c *Closure) Type() ObjectType {
+	return CLOSURE_OBJ
+}
+
+func (c *Closure) Inspect() string {
+	return fmt.Sprintf("Closure[%p]", c)
 }
