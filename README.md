@@ -2,7 +2,7 @@
 
 I got my hands dirty while reading the book "Writing an interpreter in Go".
 
-And then I'm done with "Writing a Compiler in Go". I think it would be great to have more illustrations about the concepts and the layout of the instructions and stack.
+And then I'm done with "Writing a Compiler in Go". I think it would be great to have more illustrations about the concepts and the layout of the instructions and the stack.
 
 * Lexer that distills the meaning of human readable source code into more essential form that arranges tokens which are defined and given its own meaning in the programming language.
 * Parser that transforms source codes(tokens lexed by Lexer) to AST structure. Here, Top down operator precedence parser (a.k.a. Pratt parser) is picked up and implemented. 
