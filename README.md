@@ -4,7 +4,7 @@ I got my hands dirty while reading the book "Writing an interpreter in Go".
 
 And then I'm done with "Writing a Compiler in Go".
 
-* Lexer
+* Lexer that distills the meaning of human readable source code into more essenial form that arranges tokens which are defined in the programming language.
 * Parser that transforms source codes(tokens lexed by Lexer) to AST structure. Here, Top down operator precedence parser (a.k.a. Pratt parser) is picked up and implemented. 
 * AST (Abstract Syntax Tree)
 * Interpreter that traverses the AST and executes it on the fly.
